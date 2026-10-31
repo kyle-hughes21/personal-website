@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} — {{ config.title }}{% endblock %}
+{% block og_title %}{{ term.name }} — {{ config.title }}{% endblock %}
+{% block og_description %}{{ config.description }}{% endblock %}
+
+{% block content %}
+<section class="section" aria-labelledby="taxonomy-title">
+  <div class="container">
+    <header class="section-header animate-fade-in">
+      <span class="section-tag">{{ taxonomy.name }}</span>
+      <h1 id="taxonomy-title" class="section-title">{{ term.name }}</h1>
+      <p class="section-description">{{ term.pages | length }} {{ "item" if term.pages | length == 1 else "items" }} tagged with "{{ term.name }}"</p>
+    </header>
+
+    <div class="grid grid-2">
+      {% for page in term.pages %}
+      <article class="card post-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
+        <div class="post-meta">
+          <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+          {% if page.taxonomies.category %}
+          <span class="post-category">{{ page.taxonomies.category | first }}</span>
+          {% endif %}
+        </div>
+
+        <h3 class="post-title"><a href="{{ page.permalink | safe }}" class="card-interactive">{{ page.title }}</a></h3>
+
+        <p class="post-excerpt">{{ page.description }}</p>
+
+        <a href="{{ page.permalink | safe }}" class="post-link">
+          Read more
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if term.pages | length == 0 %}
+    <div class="card" style="text-align: center; padding: var(--space-16);">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-6); color: var(--color-text-muted);" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <h3 style="margin-bottom: var(--space-3);">No items found</h3>
+      <p class="text-muted">No content tagged with "{{ term.name }}" yet.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

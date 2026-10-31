@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ config.description }}">
+  <meta name="author" content="{{ config.extra.author }}">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+  <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
+  <meta property="og:url" content="{{ current_url | safe }}">
+  <meta property="og:image" content="{% block og_image %}{{ config.base_url }}/{{ config.extra.og_image }}{% endblock og_image %}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock twitter_title %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock twitter_description %}">
+  <meta name="twitter:image" content="{{ config.base_url }}/{{ config.extra.og_image }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ config.base_url }}/{{ config.extra.favicon }}">
+  <link rel="apple-touch-icon" href="{{ config.base_url }}/images/apple-touch-icon.png">
+  <link rel="manifest" href="{{ config.base_url }}/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ get_url(path='css/main.css') | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/syntax.css') | safe }}">
+
+  {% block head_extra %}{% endblock head_extra %}
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="{{ config.base_url }}/" class="nav-brand" aria-label="Home">
+        <span class="nav-brand-text">Kyle</span>
+        <span class="nav-brand-dot" aria-hidden="true"></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu" role="menubar">
+        <li role="none"><a href="{{ config.base_url }}/" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="{{ config.base_url }}/projects/" class="nav-link" role="menuitem">Projects</a></li>
+        <li role="none"><a href="{{ config.base_url }}/about/" class="nav-link" role="menuitem">About</a></li>
+        <li role="none"><a href="{{ config.base_url }}/contact/" class="nav-link nav-link--cta" role="menuitem">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" role="main">
+    {% block content %}{% endblock content %}
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="{{ config.base_url }}/" class="footer-brand-link">
+            <span class="footer-brand-text">Kyle</span>
+            <span class="footer-brand-dot" aria-hidden="true"></span>
+          </a>
+          <p class="footer-tagline">Software engineer building reliable systems.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h3 class="footer-heading">Navigate</h3>
+          <ul>
+            <li><a href="{{ config.base_url }}/projects/">Projects</a></li>
+            <li><a href="{{ config.base_url }}/blog/">Blog</a></li>
+            <li><a href="{{ config.base_url }}/about/">About</a></li>
+            <li><a href="{{ config.base_url }}/contact/">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-social" aria-label="Social links">
+          <h3 class="footer-heading">Connect</h3>
+          <ul>
+            <li><a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a></li>
+            <li><a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; {{ now() | date(format="%Y") }} {{ config.extra.author }}. Built with <a href="https://www.getzola.org/" target="_blank" rel="noopener">Zola</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ get_url(path='js/main.js') | safe }}" defer></script>
+  {% block scripts %}{% endblock scripts %}
+</body>
+</html>

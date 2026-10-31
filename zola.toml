@@ -1,0 +1,27 @@
+base_url = "https://kyle-hughes21.github.io"
+title = "Kyle Hughes — Security Software Engineer"
+description = "Portfolio and blog of Kyle Hughes, a Security Software Engineer / DevSecOps specialist with 8+ years experience in cloud-native security, Kubernetes, and infrastructure automation."
+default_language = "en"
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+feed_limit = 20
+build_search_index = true
+link_checker = { check_external = true }
+
+taxonomies = [
+    { name = "category", feed = true },
+    { name = "tags", feed = true },
+]
+
+[extra]
+author = "Kyle Hughes"
+github = "https://github.com/kyle-hughes21"
+linkedin = "https://linkedin.com/in/kylepmhughes"
+
+# Social/SEO
+og_image = "images/og-default.png"
+favicon = "images/favicon.ico"
+
+# Theme colors (used in CSS custom properties)
+theme_color = "#0f172a"
+accent_color = "#22d3ee"

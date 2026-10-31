@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}About — {{ config.title }}{% endblock %}
+{% block og_title %}About — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="grid grid-2" style="align-items: start; gap: var(--space-12); min-height: calc(100vh - 200px);">
+      <div class="animate-slide-up" style="min-width: 0;">
+        <header class="section-header" style="text-align: left; margin-bottom: var(--space-8);">
+          <span class="section-tag" style="display: inline-block;">Profile</span>
+          <h1 id="about-title" class="section-title">About Me</h1>
+        </header>
+
+        <div class="prose" style="max-width: 100%;">
+          {{ page.content | safe }}
+        </div>
+      </div>
+
+      <aside class="animate-slide-up" style="animation-delay: 200ms; min-width: 0;">
+        <div class="card" style="position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto;">
+          <h3 style="margin-bottom: var(--space-6); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border);">Currently</h3>
+          <dl style="display: grid; gap: var(--space-4);">
+            <div>
+              <dt class="text-xs text-muted" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1);">Focus</dt>
+              <dd class="font-mono text-sm">Security Engineering, DevSecOps, Kubernetes, Cloud-Native Security</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-muted" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1);">Role</dt>
+              <dd class="text-sm">Senior DevSecOps Engineer @ Context Labs</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-muted" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1);">Location</dt>
+              <dd class="text-sm">{{ page.extra.location | default(value="Remote") }}</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-muted" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1);">Available</dt>
+              <dd class="text-sm">{{ page.extra.availability | default(value="Open to opportunities") }}</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-muted" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1);">Timezone</dt>
+              <dd class="text-sm">{{ page.extra.timezone | default(value="UTC") }}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-6);">
+          <h3 style="margin-bottom: var(--space-4);">Experience Highlights</h3>
+          <ul style="list-style: none; display: grid; gap: var(--space-3);">
+            {% for highlight in page.extra.highlights %}
+            <li style="padding-left: var(--space-4); border-left: 2px solid var(--color-accent); position: relative;">
+              <span style="position: absolute; left: -8px; top: 0; width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%;"></span>
+              {{ highlight | safe }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Values / Philosophy -->
+{% if page.extra.values %}
+<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="values-title">
+  <div class="container">
+    <header class="section-header animate-fade-in">
+      <span class="section-tag">Philosophy</span>
+      <h2 id="values-title" class="section-title">How I Work</h2>
+    </header>
+
+    <div class="grid grid-3">
+      {% for value in page.extra.values %}
+      <article class="card animate-slide-up" style="animation-delay: {{ loop.index * 100 }}ms;">
+        <div class="skill-icon" style="margin-bottom: var(--space-4);">
+          {% if value.icon == "code" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="16 18 22 12 16 6"/>
+  <polyline points="8 6 2 12 8 18"/>
+</svg>
+          {% elif value.icon == "server" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+  <line x1="6" y1="6" x2="6.01" y2="6"/>
+  <line x1="6" y1="18" x2="6.01" y2="18"/>
+</svg>
+          {% elif value.icon == "book-open" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+</svg>
+          {% elif value.icon == "users" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+  <circle cx="9" cy="7" r="4"/>
+  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+</svg>
+          {% elif value.icon == "shield" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+</svg>
+          {% elif value.icon == "zap" %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+</svg>
+          {% endif %}
+        </div>
+        <h4 style="margin-bottom: var(--space-2);">{{ value.title }}</h4>
+        <p class="text-sm" style="margin: 0;">{{ value.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

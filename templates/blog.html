@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Blog — {{ config.title }}{% endblock %}
+{% block og_title %}Blog — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="section" aria-labelledby="blog-title">
+  <div class="container">
+    <header class="section-header animate-fade-in">
+      <span class="section-tag">Writing</span>
+      <h1 id="blog-title" class="section-title">Blog Posts</h1>
+      <p class="section-description">Thoughts on software engineering, systems design, and learning in public</p>
+    </header>
+
+    <div class="grid grid-2">
+      {% for page in section.pages %}
+      <article class="card post-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
+        <div class="post-meta">
+          <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+          {% if page.taxonomies.category %}
+          <span class="post-category">{{ page.taxonomies.category | first }}</span>
+          {% endif %}
+        </div>
+
+        <h3 class="post-title"><a href="{{ page.permalink | safe }}" class="card-interactive">{{ page.title }}</a></h3>
+
+        <p class="post-excerpt">{{ page.description }}</p>
+
+        <a href="{{ page.permalink | safe }}" class="post-link">
+          Read more
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if section.pages | length == 0 %}
+    <div class="card" style="text-align: center; padding: var(--space-16);">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-6); color: var(--color-text-muted);" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <h3 style="margin-bottom: var(--space-3);">No posts yet</h3>
+      <p class="text-muted">Add markdown files to <code>content/blog/</code> to start writing.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

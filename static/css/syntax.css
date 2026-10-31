@@ -1,0 +1,197 @@
+/* ==========================================================================
+   Syntax Highlighting — Dracula-inspired theme
+   ========================================================================== */
+
+/* Base */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: var(--space-5);
+  background: #1e1f29;
+  color: #f8f8f2;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+/* Comments */
+.hljs-comment,
+.hljs-quote {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* Keywords */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #ff79c6;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-attribute {
+  color: #50fa7b;
+}
+
+/* Literals */
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: #bd93f9;
+}
+
+/* Strings */
+.hljs-string,
+.hljs-regexp,
+.hljs-doctag,
+.hljs-meta .hljs-keyword {
+  color: #f1fa8c;
+}
+
+/* Types */
+.hljs-type,
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-class .hljs-title.class_ {
+  color: #8be9fd;
+}
+
+/* Numbers */
+.hljs-number,
+.hljs-link {
+  color: #bd93f9;
+}
+
+/* Functions */
+.hljs-function,
+.hljs-title.function_,
+.hljs-title.class_ {
+  color: #50fa7b;
+}
+
+/* Parameters */
+.hljs-params,
+.hljs-attr,
+.hljs-meta .hljs-string {
+  color: #f8f8f2;
+}
+
+/* Punctuation */
+.hljs-punctuation,
+.hljs-tag {
+  color: #f8f8f2;
+}
+
+/* Deletion */
+.hljs-deletion {
+  color: #ff5555;
+}
+
+/* Meta */
+.hljs-meta {
+  color: #6272a4;
+}
+
+/* Emphasis */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* Line numbers (optional) */
+.hljs-ln {
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-ln-numbers {
+  display: inline-block;
+  text-align: right;
+  padding: 0 var(--space-4) 0 0;
+  width: 3rem;
+  user-select: none;
+  color: #6272a4;
+  border-right: 1px solid #3d3f4a;
+  margin-right: var(--space-4);
+}
+
+.hljs-ln-code {
+  display: inline-block;
+  padding-left: var(--space-4);
+  width: calc(100% - 4rem);
+}
+
+/* Inline code in prose */
+:not(pre) > code.hljs {
+  padding: 0.125em 0.375em;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+/* Language-specific tweaks */
+
+/* Rust */
+.language-rust .hljs-keyword { color: #ff79c6; }
+.language-rust .hljs-type { color: #8be9fd; }
+.language-rust .hljs-macro { color: #f1fa8c; }
+.language-rust .hljs-attribute { color: #50fa7b; }
+
+/* JavaScript/TypeScript */
+.language-js .hljs-keyword,
+.language-ts .hljs-keyword { color: #ff79c6; }
+.language-js .hljs-title.class_,
+.language-ts .hljs-title.class_ { color: #8be9fd; }
+
+/* Python */
+.language-python .hljs-decorator { color: #ff79c6; }
+.language-python .hljs-builtin { color: #8be9fd; }
+
+/* Go */
+.language-go .hljs-keyword { color: #ff79c6; }
+.language-go .hljs-type { color: #8be9fd; }
+
+/* HTML/XML */
+.language-html .hljs-tag,
+.language-xml .hljs-tag { color: #ff79c6; }
+.language-html .hljs-attr,
+.language-xml .hljs-attr { color: #50fa7b; }
+
+/* CSS */
+.language-css .hljs-property { color: #f8f8f2; }
+.language-css .hljs-value { color: #f1fa8c; }
+
+/* JSON */
+.language-json .hljs-attr { color: #50fa7b; }
+.language-json .hljs-string { color: #f1fa8c; }
+
+/* TOML */
+.language-toml .hljs-section { color: #8be9fd; }
+.language-toml .hljs-attr { color: #50fa7b; }
+
+/* YAML */
+.language-yaml .hljs-attr { color: #50fa7b; }
+.language-yaml .hljs-string { color: #f1fa8c; }
+
+/* Shell/Bash */
+.language-bash .hljs-built_in { color: #8be9fd; }
+.language-bash .hljs-variable { color: #bd93f9; }
+
+/* Dockerfile */
+.language-dockerfile .hljs-keyword { color: #ff79c6; }
+.language-dockerfile .hljs-attr { color: #50fa7b; }
+
+/* Diff */
+.language-diff .hljs-addition { color: #50fa7b; }
+.language-diff .hljs-deletion { color: #ff5555; }
+
+/* Markdown */
+.language-md .hljs-link { color: #bd93f9; }
+.language-md .hljs-link_url { color: #8be9fd; }

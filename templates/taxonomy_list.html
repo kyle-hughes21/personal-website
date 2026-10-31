@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ taxonomy.name }} — {{ config.title }}{% endblock %}
+{% block og_title %}{{ taxonomy.name }} — {{ config.title }}{% endblock %}
+{% block og_description %}{{ config.description }}{% endblock %}
+
+{% block content %}
+<section class="section" aria-labelledby="taxonomy-list-title">
+  <div class="container">
+    <header class="section-header animate-fade-in">
+      <span class="section-tag">Taxonomy</span>
+      <h1 id="taxonomy-list-title" class="section-title">{{ taxonomy.name | capitalize }}</h1>
+      <p class="section-description">Browse all {{ taxonomy.name }}</p>
+    </header>
+
+    <div class="grid grid-3">
+      {% for term in terms %}
+      <article class="card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4);">
+          <a href="{{ term.permalink | safe }}" class="card-interactive" style="font-weight: 600; font-size: var(--font-size-lg);">{{ term.name }}</a>
+          <span class="tag tag-primary">{{ term.pages | length }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if terms | length == 0 %}
+    <div class="card" style="text-align: center; padding: var(--space-16);">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-6); color: var(--color-text-muted);" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <h3 style="margin-bottom: var(--space-3);">No {{ taxonomy.name }} yet</h3>
+      <p class="text-muted">Add content with {{ taxonomy.name }} to see them here.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
