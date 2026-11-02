@@ -176,5 +176,5 @@ spec:
 ## Links
 
 - **Source**: [github.com/kyle-hughes21/justpostgres-operator](https://github.com/kyle-hughes21/justpostgres-operator)
-- **Design Doc**: [docs/DESIGN.md](https://github.com/kyle-hughes21/justpostgres-operator/blob/main/docs/DESIGN.md)
-- **Extension SDK**: [docs/EXTENSIONS.md](https://github.com/kyle-hughes21/justpostgres-operator/blob/main/docs/EXTENSIONS.md)
+- **Design Doc**: *coming soon*
+- **Extension SDK**: *coming soon*

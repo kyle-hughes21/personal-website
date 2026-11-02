@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}404 — Page Not Found{% endblock %}
+
+{% block og_title %}404 — Page Not Found{% endblock %}
+{% block og_description %}Sorry, we couldn't find the page you're looking for.{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 4rem 1rem; max-width: 40rem; margin: 0 auto;">
+  <h1 style="font-size: 6rem; font-weight: 700; color: #22d3ee; margin-bottom: 1rem;">404</h1>
+  <h2 style="font-size: 1.5rem; color: #94a3b8; margin-bottom: 2rem;">Page Not Found</h2>
+  <p style="color: #94a3b8; margin-bottom: 2rem; max-width: 40rem; margin-left: auto; margin-right: auto;">
+    Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
+  </p>
+  
+  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+    <a href="{{ config.base_url }}/" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 0.5rem; background: #22d3ee; color: #0f172a; text-decoration: none; transition: background 0.2s;">
+      ← Back Home
+    </a>
+    <a href="{{ config.base_url }}/projects/" class="btn btn--secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 0.5rem; background: #1e293b; color: #f8fafc; border: 1px solid #334155; text-decoration: none; transition: all 0.2s;">
+      Browse Projects
+    </a>
+    <a href="{{ config.base_url }}/contact/" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 0.5rem; background: transparent; color: #94a3b8; text-decoration: none; transition: all 0.2s;">
+      Contact Me
+    </a>
+  </div>
+
+  <hr style="border: none; border-top: 1px solid #334155; margin: 2rem 0;">
+
+  <p style="color: #64748b; font-size: 0.875rem;">
+    <strong>Popular pages:</strong>
+    <a href="{{ config.base_url }}/projects/waylate/" style="color: #22d3ee; margin: 0 0.5rem;">Waylate</a> ·
+    <a href="{{ config.base_url }}/projects/always-free-cloud/" style="color: #22d3ee; margin: 0 0.5rem;">Always-Free-Cloud</a> ·
+    <a href="{{ config.base_url }}/projects/justpostgres-operator/" style="color: #22d3ee; margin: 0 0.5rem;">justpostgres-operator</a> ·
+    <a href="{{ config.base_url }}/projects/nixconfig/" style="color: #22d3ee; margin: 0 0.5rem;">nixconfig</a> ·
+    <a href="{{ config.base_url }}/about/" style="color: #22d3ee; margin: 0 0.5rem;">About</a> ·
+    <a href="{{ config.base_url }}/contact/" style="color: #22d3ee; margin: 0 0.5rem;">Contact</a>
+  </p>
+</div>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn--primary {
+    background: #22d3ee;
+    color: #0f172a;
+  }
+
+  .btn--primary:hover {
+    background: #06b6d4;
+  }
+
+  .btn--secondary {
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
+  }
+
+  .btn--secondary:hover {
+    background: #334155;
+    border-color: #22d3ee;
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: #94a3b8;
+  }
+
+  .btn--ghost:hover {
+    color: #22d3ee;
+    background: #1e293b;
+  }
+</style>
+{% endblock %}

@@ -8,13 +8,16 @@
 <article class="section">
   <div class="container">
     <header style="max-width: 800px; margin: 0 auto var(--space-12); text-align: center;">
-      <div class="post-meta animate-fade-in" style="justify-content: center; margin-bottom: var(--space-4);">
+      <div class="post-meta animate-fade-in" style="justify-content: center; margin-bottom: var(--space-4); flex-wrap: wrap;">
         <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
-        {% if page.taxonomies.category %}
-        <span class="post-category">{{ page.taxonomies.category | first }}</span>
+        {% if page.taxonomies.tags %}
+        <span class="post-category">{{ page.taxonomies.tags | first }}</span>
+        {% endif %}
+        {% if page.extra.series %}
+        <span class="post-series">{{ page.extra.series }}</span>
         {% endif %}
         {% if page.extra.reading_time %}
-        <span>{{ page.extra.reading_time }} min read</span>
+        <span class="post-reading-time">{{ page.extra.reading_time }} min read</span>
         {% endif %}
       </div>
 

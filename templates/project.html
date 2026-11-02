@@ -13,6 +13,7 @@
   "name": "{{ page.title }}",
   "description": "{{ page.description }}",
   "url": "{{ page.permalink | safe }}",
+  "datePublished": "{{ page.date }}",
   {% if page.extra.github %}
   "codeRepository": "{{ page.extra.github }}",
   {% endif %}

@@ -127,6 +127,6 @@ show_furigana = true  # for Japanese
 ## Links
 
 - **Source**: [github.com/kyle-hughes21/waylate](https://github.com/kyle-hughes21/waylate)
-- **Design Doc**: [docs/DESIGN.md](https://github.com/kyle-hughes21/waylate/blob/main/docs/DESIGN.md)
-- **Learning Methodology**: [docs/METHODOLOGY.md](https://github.com/kyle-hughes21/waylate/blob/main/docs/METHODOLOGY.md)
-- **Protocol Usage**: [docs/WAYLAND_PROTOCOLS.md](https://github.com/kyle-hughes21/waylate/blob/main/docs/WAYLAND_PROTOCOLS.md)
+- **Design Doc**: *coming soon*
+- **Learning Methodology**: *coming soon*
+- **Protocol Usage**: *coming soon*

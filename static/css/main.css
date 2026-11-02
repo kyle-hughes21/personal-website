@@ -583,6 +583,37 @@ pre code {
   transform: rotate(-45deg);
 }
 
+.search-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.search-toggle:hover {
+  background: var(--color-bg-subtle);
+}
+
+@media (min-width: 768px) {
+  .search-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-toggle {
+    display: none;
+  }
+}
+
 /* Mobile nav open state */
 @media (max-width: 767px) {
   .nav-menu {
@@ -899,6 +930,13 @@ pre code {
   color: var(--color-accent);
 }
 
+.tag-more {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  cursor: default;
+  font-style: italic;
+}
+
 .project-links {
   display: flex;
   gap: var(--space-3);
@@ -953,6 +991,22 @@ pre code {
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: 500;
+}
+
+.post-series {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.post-reading-time {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
 }
 
 .post-title {
@@ -1052,6 +1106,8 @@ pre code {
   border-collapse: collapse;
   margin: var(--space-6) 0;
   font-size: var(--font-size-sm);
+  overflow-x: auto;
+  display: block;
 }
 
 .prose th,
@@ -1059,11 +1115,24 @@ pre code {
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--color-border);
   text-align: left;
+  white-space: nowrap;
 }
 
 .prose th {
   background: var(--color-bg-elevated);
   font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .prose table {
+    display: table;
+    overflow-x: visible;
+  }
+  
+  .prose th,
+  .prose td {
+    white-space: normal;
+  }
 }
 
 .prose a {

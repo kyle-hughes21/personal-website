@@ -1,0 +1,11 @@
+{# Skill Card Partial #}
+{# Usage: {% set skill = { "name": "Kubernetes", "icon": "kubernetes" } %}{% set skill_index = loop.index %}{% include "skill-card.html" %} #}
+{% set name = skill.name %}
+{% set icon = skill.icon %}
+<article class="skill-card animate-slide-up" style="animation-delay: {{ skill_index * 50 }}ms;">
+  <div class="skill-icon">
+    {% set icon_name = icon %}
+    {% include "project-icon.html" %}
+  </div>
+  <span class="skill-name">{{ name }}</span>
+</article>

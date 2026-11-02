@@ -35,6 +35,11 @@
   <link rel="stylesheet" href="{{ get_url(path='css/syntax.css') | safe }}">
 
   {% block head_extra %}{% endblock head_extra %}
+
+  <!-- Plausible Analytics (privacy-friendly) -->
+  {% if config.extra.plausible_domain %}
+  <script defer data-domain="{{ config.extra.plausible_domain }}" src="https://plausible.io/js/script.js"></script>
+  {% endif %}
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -55,9 +60,20 @@
         <li role="none"><a href="{{ config.base_url }}/projects/" class="nav-link" role="menuitem">Projects</a></li>
         <li role="none"><a href="{{ config.base_url }}/about/" class="nav-link" role="menuitem">About</a></li>
         <li role="none"><a href="{{ config.base_url }}/contact/" class="nav-link nav-link--cta" role="menuitem">Contact</a></li>
+        <li role="none">
+          <button id="search-toggle" class="nav-link search-toggle" aria-label="Search" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
+
+  <!-- Pagefind Search UI -->
+  <div id="pagefind-ui" style="display: none; position: fixed; top: 80px; right: 20px; z-index: 1000; max-width: 400px;"></div>
 
   <main id="main-content" role="main">
     {% block content %}{% endblock content %}
@@ -100,6 +116,43 @@
   </footer>
 
   <script src="{{ get_url(path='js/main.js') | safe }}" defer></script>
+  <!-- Pagefind Search -->
+  <script src="https://cdn.jsdelivr.net/npm/pagefind@1.1.0/dist/pagefind-ui.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/pagefind@1.1.0/dist/pagefind-ui.css" rel="stylesheet">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Pagefind will be initialized by pagefind-ui.js
+      // Toggle search UI
+      const searchToggle = document.getElementById('search-toggle');
+      const pagefindUI = document.getElementById('pagefind-ui');
+      
+      if (searchToggle && pagefindUI) {
+        searchToggle.addEventListener('click', function() {
+          const isOpen = pagefindUI.style.display !== 'none';
+          pagefindUI.style.display = isOpen ? 'none' : 'block';
+          this.setAttribute('aria-expanded', !isOpen);
+        });
+        
+        // Close on escape
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && pagefindUI.style.display !== 'none') {
+            pagefindUI.style.display = 'none';
+            searchToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Close on click outside
+        document.addEventListener('click', function(e) {
+          if (pagefindUI.style.display !== 'none' && 
+              !pagefindUI.contains(e.target) && 
+              !searchToggle.contains(e.target)) {
+            pagefindUI.style.display = 'none';
+            searchToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
+  </script>
   {% block scripts %}{% endblock scripts %}
 </body>
 </html>

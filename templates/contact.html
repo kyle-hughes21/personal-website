@@ -3,6 +3,14 @@
 {% block title %}Contact — {{ config.title }}{% endblock %}
 {% block og_title %}Contact — {{ config.title }}{% endblock %}
 
+{% block head_extra %}
+<!-- Formspree AJAX library for enhanced form handling -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+{% endblock %}
+
 {% block content %}
 <section class="section" aria-labelledby="contact-title">
   <div class="container">
@@ -45,37 +53,42 @@
 
       <div class="animate-slide-up" style="animation-delay: 200ms;">
         <div class="card contact-form">
-          <form action="https://formspree.io/f/your-form-id" method="POST" data-ajax>
-            <input type="hidden" name="_next" value="{{ config.base_url }}/contact/?success=1">
+          <form id="contact-form" action="https://formspree.io/f/xaeellob" method="POST">
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="label">Name</label>
-                <input type="text" id="name" name="name" class="input" placeholder="Your name" required>
+                <input type="text" id="name" name="name" class="input" placeholder="Your name" required data-fs-field>
+                <span data-fs-error="name"></span>
               </div>
               <div class="form-group">
                 <label for="email" class="label">Email</label>
-                <input type="email" id="email" name="_replyto" class="input" placeholder="your@email.com" required>
+                <input type="email" id="email" name="_replyto" class="input" placeholder="your@email.com" required data-fs-field>
+                <span data-fs-error="email"></span>
               </div>
             </div>
 
             <div class="form-group">
               <label for="subject" class="label">Subject</label>
-              <select id="subject" name="subject" class="input select" required>
+              <select id="subject" name="subject" class="input select" required data-fs-field>
                 <option value="">Select a topic</option>
                 <option value="job">Job Opportunity</option>
                 <option value="freelance">Freelance Project</option>
                 <option value="collaboration">Collaboration</option>
                 <option value="other">Other</option>
               </select>
+              <span data-fs-error="subject"></span>
             </div>
 
             <div class="form-group">
               <label for="message" class="label">Message</label>
-              <textarea id="message" name="message" class="textarea" placeholder="Tell me about your project or opportunity..." required></textarea>
+              <textarea id="message" name="message" class="textarea" placeholder="Tell me about your project or opportunity..." required data-fs-field></textarea>
+              <span data-fs-error="message"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg form-submit">
+            <button type="submit" class="btn btn-primary btn-lg form-submit" data-fs-submit-btn>
               Send Message
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -84,12 +97,21 @@
             </button>
           </form>
 
-          <div id="form-success" class="toast toast-success" style="display: none; margin-top: var(--space-6); padding: var(--space-4); background: var(--color-success); color: white; border-radius: var(--radius-lg);" role="alert">
+          <!-- Formspree success/error containers -->
+          <div data-fs-success class="toast toast-success" style="display: none; margin-top: var(--space-6); padding: var(--space-4); background: var(--color-success); color: white; border-radius: var(--radius-lg);" role="alert">
             Thanks for reaching out! I'll get back to you soon.
+          </div>
+          <div data-fs-error class="toast toast-error" style="display: none; margin-top: var(--space-6); padding: var(--space-4); background: var(--color-error); color: white; border-radius: var(--radius-lg);" role="alert">
+            Something went wrong. Please try again or email me directly.
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Initialize Formspree AJAX form
+  formspree('initForm', { formElement: '#contact-form', formId: 'xaeellob' });
+</script>
 {% endblock %}

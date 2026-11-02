@@ -117,6 +117,6 @@ Game systems are **loadable plugins** — no core changes needed:
 ## Links
 
 - **Source**: [github.com/kyle-hughes21/open-character-sheet](https://github.com/kyle-hughes21/open-character-sheet)
-- **Live Demo**: [charsheet.kylehughes.dev](https://charsheet.kylehughes.dev)
-- **Plugin Dev Guide**: [docs/PLUGINS.md](https://github.com/kyle-hughes21/open-character-sheet/blob/main/docs/PLUGINS.md)
-- **Architecture**: [docs/ARCHITECTURE.md](https://github.com/kyle-hughes21/open-character-sheet/blob/main/docs/ARCHITECTURE.md)
+- **Live Demo**: *coming soon*
+- **Plugin Dev Guide**: *coming soon*
+- **Architecture**: *coming soon*

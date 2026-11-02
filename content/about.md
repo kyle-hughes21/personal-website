@@ -38,10 +38,10 @@ I'm a **Security Software Engineer / DevSecOps specialist** with 10+ years desig
 Leading AI enablement & governance across Engineering: MCP security framework, training programs, communities of practice (50+ engineers). Chairs Security/Privacy/Compliance Steering Group. Built containerized flagship VM product + multi-cloud IaC (AWS/Azure/GCP). Building JustPostgres Operator (PostgreSQL-as-a-platform).
 
 **Senior DevSecOps Engineer** @ **Context Labs** (Cambridge, MA) — *Mar 2023 – Feb 2026*  
-Led AppSec rollout (Snyk across 13 products, 3 product lines). Orchestrated zero-downtime EKS→AKS migration. Owned incident response & on-call. Standardized cloud-agnostic security controls.
+Led AppSec rollout (Snyk across 20+ products, 3 product lines). Orchestrated zero-downtime EKS→AKS migration. Owned incident response & on-call. Standardized cloud-agnostic security controls.
 
 **Senior DevOps Engineer** @ **Imprivata** — *Oct 2020 – Mar 2023*  
-Built 50+ CI/CD pipelines with integrated security gates. Ansible roles for developer environments (still in use 2026). Python/Rust security tooling. IaC defenses for DDoS, XSS, supply chain.
+Built 500+ CI/CD pipelines with integrated security gates. Ansible roles for developer environments (still in use 2026). Python/Rust security tooling. IaC defenses for DDoS, XSS, supply chain.
 
 *Earlier: SimpliSafe, Eaton Vance, Red Hat*
 

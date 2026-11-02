@@ -17,14 +17,27 @@
       <article class="card post-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
         <div class="post-meta">
           <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
-          {% if page.taxonomies.category %}
-          <span class="post-category">{{ page.taxonomies.category | first }}</span>
+          {% if page.taxonomies.tags %}
+          <span class="post-tag-primary">{{ page.taxonomies.tags | first }}</span>
           {% endif %}
         </div>
 
         <h3 class="post-title"><a href="{{ page.permalink | safe }}" class="card-interactive">{{ page.title }}</a></h3>
 
         <p class="post-excerpt">{{ page.description }}</p>
+
+        <div class="post-tags" style="margin-top: var(--space-3);">
+          {% if page.taxonomies.tags %}
+          {% for tag in page.taxonomies.tags %}
+          {% if loop.index <= 3 %}
+          <span class="tag {% if loop.first %}tag-primary{% endif %}">{{ tag }}</span>
+          {% endif %}
+          {% endfor %}
+          {% if page.taxonomies.tags | length > 3 %}
+          <span class="tag tag-more">+{{ page.taxonomies.tags | length - 3 }} more</span>
+          {% endif %}
+          {% endif %}
+        </div>
 
         <a href="{{ page.permalink | safe }}" class="post-link">
           Read more

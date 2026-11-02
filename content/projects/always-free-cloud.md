@@ -82,5 +82,5 @@ Always-Free-Cloud is a production-grade personal infrastructure project that pro
 ## Links
 
 - **Source**: [github.com/kyle-hughes21/always-free-cloud](https://github.com/kyle-hughes21/always-free-cloud)
-- **Live Demo**: [homer.kylehughes.dev](https://homer.kylehughes.dev) (via Cloudflare Tunnel)
-- **Architecture Docs**: [docs/ARCHITECTURE.md](https://github.com/kyle-hughes21/always-free-cloud/blob/main/docs/ARCHITECTURE.md)
+- **Live Demo**: *coming soon* (via Cloudflare Tunnel)
+- **Architecture Docs**: *coming soon*

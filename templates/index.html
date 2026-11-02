@@ -16,7 +16,7 @@
     </span>
 
     <h1 id="hero-title" class="hero-title animate-fade-in stagger-1">
-      Hi, I'm <span class="text-accent">Kyle Hughes</span> — Security Software Engineer / DevSecOps
+      Hi, I'm <span class="text-accent">Kyle Hughes</span>
     </h1>
 
     <p class="hero-subtitle animate-fade-in stagger-2">
@@ -96,294 +96,33 @@
   </div>
 </section>
 
-<!-- Security Engineering (Core) -->
-<section class="section" aria-labelledby="security-eng-title">
+{% set skills_data = load_data(path="data/skills.yaml") %}
+
+{% for category in skills_data.skills %}
+{% set cat_id = category.category | lower | replace(from=" ", to="-") | replace(from="&", to="") %}
+{% if not loop.first %}
+<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="{{ cat_id }}-title">
+{% else %}
+<section class="section" aria-labelledby="{{ cat_id }}-title">
+{% endif %}
   <div class="container">
     <header class="section-header">
-      <span class="section-tag">Core Specialty</span>
-      <h2 id="security-eng-title" class="section-title">Security Engineering</h2>
-      <p class="section-description">Application, product, and infrastructure security at scale</p>
+      <span class="section-tag">{{ category.tag }}</span>
+      <h2 id="{{ cat_id }}-title" class="section-title">{{ category.category }}</h2>
+      <p class="section-description">{{ category.description }}</p>
     </header>
     <div class="skills-grid">
-      {% set security_eng = [
-        { "name": "AppSec", "icon": "shield" },
-        { "name": "ProdSec", "icon": "shield-check" },
-        { "name": "DevSecOps", "icon": "devsecops" },
-        { "name": "Snyk", "icon": "snyk" },
-        { "name": "SonarQube", "icon": "sonarqubeserver" },
-        { "name": "Falco", "icon": "falco" },
-        { "name": "Kyverno", "icon": "kyverno" },
-        { "name": "OPA", "icon": "opa" },
-        { "name": "Tailscale", "icon": "tailscale" },
-        { "name": "Vault", "icon": "vault" },
-        { "name": "OpenBao", "icon": "openbao" },
-        { "name": "Auth0", "icon": "auth0" },
-        { "name": "Wireshark", "icon": "wireshark" },
-      ] %}
-      {% for skill in security_eng %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
+      {% for skill in category.skills %}
+      {% set skill_index = loop.index %}
+      {% include "skill-card.html" %}
     </div>
   </div>
 </section>
-
-<!-- Platform & Infrastructure Leadership -->
-<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="platform-lead-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">Platform Leadership</span>
-      <h2 id="platform-lead-title" class="section-title">Platform & Infrastructure Leadership</h2>
-      <p class="section-description">Building and operating the foundations teams depend on</p>
-    </header>
-    <div class="skills-grid">
-      {% set platform_lead = [
-        { "name": "Kubernetes", "icon": "kubernetes" },
-        { "name": "Terraform", "icon": "terraform" },
-        { "name": "OpenTofu", "icon": "opentofu" },
-        { "name": "Docker", "icon": "docker" },
-        { "name": "Packer", "icon": "packer" },
-        { "name": "Istio", "icon": "istio" },
-        { "name": "Linux", "icon": "linux" },
-        { "name": "NixOS", "icon": "nixos" },
-        { "name": "AWS", "icon": "aws" },
-        { "name": "Azure", "icon": "azure" },
-        { "name": "Google Cloud", "icon": "gcp" },
-      ] %}
-      {% for skill in platform_lead %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
+{% endfor %}
     </div>
   </div>
 </section>
-
-<!-- Data & Analytics -->
-<section class="section" aria-labelledby="data-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">Data</span>
-      <h2 id="data-title" class="section-title">Data & Analytics</h2>
-      <p class="section-description">Data integration, streaming, and processing at scale</p>
-    </header>
-    <div class="skills-grid">
-      {% set data_tools = [
-        { "name": "Airbyte", "icon": "airbyte" },
-        { "name": "Apache Spark", "icon": "apachespark" },
-        { "name": "Snowflake", "icon": "snowflake" },
-        { "name": "Databricks", "icon": "databricks" },
-        { "name": "PostgreSQL", "icon": "postgresql" },
-        { "name": "Redis", "icon": "redis" },
-      ] %}
-      {% for skill in data_tools %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- Core Development -->
-<section class="section" aria-labelledby="coredev-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">Core Skills</span>
-      <h2 id="coredev-title" class="section-title">Core Development</h2>
-      <p class="section-description">Hands-on: languages, runtimes, and daily drivers</p>
-    </header>
-    <div class="skills-grid">
-      {% set coredev = [
-        { "name": "Python", "icon": "python" },
-        { "name": "Rust", "icon": "rust" },
-        { "name": "TypeScript", "icon": "typescript" },
-        { "name": "Go", "icon": "go" },
-        { "name": "Java (Spring)", "icon": "spring" },
-        { "name": "Bash", "icon": "bash" },
-        { "name": "PostgreSQL", "icon": "postgresql" },
-        { "name": "Redis", "icon": "redis" },
-        { "name": "Linux", "icon": "linux" },
-        { "name": "NixOS", "icon": "nixos" },
-        { "name": "Docker", "icon": "docker" },
-      ] %}
-      {% for skill in coredev %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- AI/ML Security & Enablement -->
-<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="ai-sec-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">Emerging Focus</span>
-      <h2 id="ai-sec-title" class="section-title">AI/ML Security & Enablement</h2>
-      <p class="section-description">Securing ML pipelines and governing AI-assisted development</p>
-    </header>
-    <div class="skills-grid">
-      {% set ai_sec = [
-        { "name": "Agentic Coding", "icon": "agentic-coding" },
-        { "name": "MCP Framework", "icon": "mcp" },
-        { "name": "CrewAI", "icon": "crewai" },
-        { "name": "LangGraph", "icon": "langgraph" },
-        { "name": "OpenCode", "icon": "opencode" },
-        { "name": "NVIDIA GPU", "icon": "nvidia" },
-        { "name": "Kubeflow", "icon": "kubeflow" },
-      ] %}
-      {% for skill in ai_sec %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- SRE & Observability -->
-<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="sre-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">SRE</span>
-      <h2 id="sre-title" class="section-title">SRE & Observability</h2>
-      <p class="section-description">Monitoring, alerting, and reliability engineering</p>
-    </header>
-    <div class="skills-grid">
-      {% set sre_tools = [
-        { "name": "Prometheus", "icon": "prometheus" },
-        { "name": "Grafana", "icon": "grafana" },
-        { "name": "Falco", "icon": "falco" },
-        { "name": "OpenTelemetry", "icon": "opentelemetry" },
-        { "name": "DataDog", "icon": "datadog" },
-      ] %}
-      {% for skill in sre_tools %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- CI/CD & GitOps -->
-<section class="section" aria-labelledby="cicd-title">
-  <div class="container">
-    <header class="section-header">
-      <span class="section-tag">Delivery</span>
-      <h2 id="cicd-title" class="section-title">CI/CD & GitOps</h2>
-      <p class="section-description">Continuous integration, delivery, and GitOps workflows</p>
-    </header>
-    <div class="skills-grid">
-      {% set cicd_tools = [
-        { "name": "GitHub Actions", "icon": "github-actions" },
-        { "name": "ArgoCD", "icon": "argocd" },
-        { "name": "Ansible", "icon": "ansible" },
-        { "name": "Jenkins", "icon": "jenkins" },
-      ] %}
-      {% for skill in cicd_tools %}
-      <article class="skill-card animate-slide-up" style="animation-delay: {{ loop.index * 50 }}ms;">
-        <div class="skill-icon">
-          {% set icon_name = skill.icon %}
-          {% include "project-icon.html" %}
-        </div>
-        <span class="skill-name">{{ skill.name }}</span>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- Security Domains -->
-<section class="section" style="background: var(--color-bg-elevated);" aria-labelledby="security-title">
-  <div class="container">
-    <header class="section-header animate-fade-in">
-      <span class="section-tag">Security Focus</span>
-      <h2 id="security-title" class="section-title">Security Domains</h2>
-      <p class="section-description">Specialized security engineering across the full software lifecycle</p>
-    </header>
-
-    <div class="grid grid-3">
-      <article class="card animate-slide-up" style="animation-delay: 100ms;">
-        <div class="skill-icon" style="margin-bottom: var(--space-4);">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  <polyline points="9 12 11 14 15 10"/>
-</svg>
-        </div>
-        <h4 style="margin-bottom: var(--space-2);">Application Security (AppSec)</h4>
-        <ul style="margin: 0; padding-left: var(--space-4); font-size: var(--font-size-sm); line-height: var(--space-8);">
-          <li>SAST/SCA/DAST integration (Snyk, SonarQube) across 20+ products</li>
-          <li>Threat modeling & secure design reviews</li>
-          <li>Supply chain security (SBOM, sigstore, SLSA)</li>
-          <li>Security tooling in Python/Rust</li>
-        </ul>
-      </article>
-
-      <article class="card animate-slide-up" style="animation-delay: 200ms;">
-        <div class="skill-icon" style="margin-bottom: var(--space-4);">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  <rect x="8" y="11" width="8" height="6" rx="1"/>
-  <path d="M12 11v-4a2 2 0 0 1 4 0v4"/>
-</svg>
-        </div>
-        <h4 style="margin-bottom: var(--space-2);">Product Security (ProdSec)</h4>
-        <ul style="margin: 0; padding-left: var(--space-4); font-size: var(--font-size-sm); line-height: var(--space-8);">
-          <li>Vulnerability management & coordinated disclosure</li>
-          <li>Penetration testing coordination (CrowdStrike)</li>
-          <li>Incident response & tabletop exercises</li>
-          <li>HIPAA/PHI compliance for healthcare products</li>
-        </ul>
-      </article>
-
-      <article class="card animate-slide-up" style="animation-delay: 300ms;">
-        <div class="skill-icon" style="margin-bottom: var(--space-4);">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  <path d="M12 6v6l4 2"/>
-  <path d="M8 14h8"/>
-  <path d="M12 18v-6"/>
-</svg>
-        </div>
-        <h4 style="margin-bottom: var(--space-2);">DevSecOps Automation</h4>
-        <ul style="margin: 0; padding-left: var(--space-4); font-size: var(--font-size-sm); line-height: var(--space-8);">
-          <li>CI/CD security gates (100s of pipelines via centralized workflows)</li>
-          <li>Policy-as-code (Kyverno, OPA, Checkov)</li>
-          <li>Zero-trust infrastructure (Tailscale, IAM)</li>
-          <li>Executive security reporting & dashboards</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
+{% endfor %}
 
 <!-- Featured Projects -->
 <section class="section" aria-labelledby="projects-title">
@@ -399,55 +138,9 @@
       {% set featured_pages = featured_projects.pages | sort(attribute="date") | reverse %}
       {% for page in featured_pages %}
       {% if loop.index > 3 %}{% break %}{% endif %}
-      <article class="card project-card animate-slide-up" style="animation-delay: {{ loop.index * 100 }}ms;">
-        <div class="project-image" style="display: flex; align-items: center; justify-content: center; background: var(--color-accent-light); color: var(--color-accent);">
-          {% if page.extra.icon %}
-          {% set icon_name = page.extra.icon %}
-          {% include "project-icon.html" %}
-          {% else %}
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-          {% endif %}
-        </div>
-
-        <div class="project-content">
-          <h3 class="project-title"><a href="{{ page.permalink | safe }}" class="card-interactive">{{ page.title }}</a></h3>
-          <p class="project-description">{{ page.description }}</p>
-
-          {% if page.taxonomies.tags %}
-          <div class="project-tags">
-            {% for tag in page.taxonomies.tags %}
-            <span class="tag {% if loop.first %}tag-primary{% endif %}">{{ tag }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-          <div class="project-links">
-            {% if page.extra.github %}
-            <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              Code
-            </a>
-            {% endif %}
-            {% if page.extra.demo %}
-            <a href="{{ page.extra.demo }}" target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <polyline points="18 13 22 13 22 17"></polyline>
-                <polyline points="6 11 2 11 2 7"></polyline>
-                <line x1="2" y1="21" x2="22" y2="21"></line>
-                <line x1="6" y1="3" x2="6" y2="3"></line>
-                <line x1="18" y1="3" x2="18" y2="3"></line>
-                <line x1="22" y1="21" x2="22" y2="21"></line>
-              </svg>
-              Demo
-            </a>
-            {% endif %}
-          </div>
-        </div>
-      </article>
+      {% set page = page %}
+      {% set project_index = loop.index %}
+      {% include "project-card.html" %}
       {% endfor %}
     </div>
 
@@ -480,14 +173,27 @@
       <article class="card post-card animate-slide-up" style="animation-delay: {{ loop.index * 100 }}ms;">
         <div class="post-meta">
           <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
-          {% if page.taxonomies.category %}
-          <span class="post-category">{{ page.taxonomies.category | first }}</span>
+          {% if page.taxonomies.tags %}
+          <span class="post-tag-primary">{{ page.taxonomies.tags | first }}</span>
           {% endif %}
         </div>
 
         <h3 class="post-title"><a href="{{ page.permalink | safe }}" class="card-interactive">{{ page.title }}</a></h3>
 
         <p class="post-excerpt">{{ page.description }}</p>
+
+        <div class="post-tags" style="margin-top: var(--space-3);">
+          {% if page.taxonomies.tags %}
+          {% for tag in page.taxonomies.tags %}
+          {% if loop.index <= 3 %}
+          <span class="tag {% if loop.first %}tag-primary{% endif %}">{{ tag }}</span>
+          {% endif %}
+          {% endfor %}
+          {% if page.taxonomies.tags | length > 3 %}
+          <span class="tag tag-more">+{{ page.taxonomies.tags | length - 3 }} more</span>
+          {% endif %}
+          {% endif %}
+        </div>
 
         <a href="{{ page.permalink | safe }}" class="post-link">
           Read more

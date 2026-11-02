@@ -115,6 +115,6 @@ docker compose up -d
 ## Links
 
 - **Source**: [github.com/kyle-hughes21/proton-observability](https://github.com/kyle-hughes21/proton-observability)
-- **Docker Compose**: [docker-compose.yml](https://github.com/kyle-hughes21/proton-observability/blob/main/docker-compose.yml)
-- **Grafana Dashboards**: [grafana/dashboards/](https://github.com/kyle-hughes21/proton-observability/tree/main/grafana/dashboards)
-- **DCGM Exporter Config**: [dcgm-exporter.yaml](https://github.com/kyle-hughes21/proton-observability/blob/main/dcgm-exporter.yaml)
+- **Docker Compose**: *coming soon*
+- **Grafana Dashboards**: *coming soon*
+- **DCGM Exporter Config**: *coming soon*
