@@ -1,6 +1,6 @@
 base_url = "https://kyle-hughes21.github.io"
 title = "Kyle Hughes — Security Software Engineer"
-description = "Portfolio and blog of Kyle Hughes, a Security Software Engineer / DevSecOps specialist with 8+ years experience in cloud-native security, Kubernetes, and infrastructure automation."
+description = "Portfolio and blog of Kyle Hughes, a Security Software Engineer / DevSecOps specialist with 10+ years experience in cloud-native security, Kubernetes, and infrastructure automation."
 default_language = "en"
 generate_feeds = true
 feed_filenames = ["atom.xml"]

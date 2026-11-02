@@ -5,6 +5,38 @@
 {% block og_description %}{{ page.description }}{% endblock %}
 {% block og_image %}{% if page.extra.image %}{{ page.extra.image }}{% endif %}{% endblock %}
 
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "{{ page.title }}",
+  "description": "{{ page.description }}",
+  "url": "{{ page.permalink | safe }}",
+  {% if page.extra.github %}
+  "codeRepository": "{{ page.extra.github }}",
+  {% endif %}
+  {% if page.extra.demo %}
+  "applicationUrl": "{{ page.extra.demo }}",
+  {% endif %}
+  {% if page.taxonomies.tags %}
+  "keywords": "{{ page.taxonomies.tags | join(sep=", ") }}",
+  {% endif %}
+  "programmingLanguage": [
+    {% for tag in page.taxonomies.tags %}
+    "{{ tag }}"{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Kyle Hughes",
+    "url": "{{ config.base_url }}/about/"
+  },
+  "license": "https://opensource.org/licenses/MIT"
+}
+</script>
+{% endblock head_extra %}
+
 {% block content %}
 <article class="section">
   <div class="container">

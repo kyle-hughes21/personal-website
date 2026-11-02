@@ -8,7 +8,7 @@ tags = ["Kubernetes", "Terraform", "OpenTofu", "Grafana", "Cloudflare", "Tailsca
 
 [extra]
 github = "https://github.com/kyle-hughes21/always-free-cloud"
-image = "images/projects/always-free-cloud.png"
+icon = "kubernetes"
 +++
 
 Always-Free-Cloud is a production-grade personal infrastructure project that provisions a complete Kubernetes platform using only free cloud tiers. It demonstrates how to build enterprise-quality infrastructure without monthly costs.

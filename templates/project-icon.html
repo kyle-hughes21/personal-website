@@ -1,0 +1,82 @@
+{#
+  Icon partial. Usage:
+    {% set icon_name = "python" %}{% include "project-icon.html" %}
+
+  - Brand icons: templates/icons/<name>.svg (Simple Icons, CC0), tinted with the colour below.
+  - Generic icons (shield, bot, ...): Lucide (ISC); they follow the theme accent colour.
+  - To add one: drop <name>.svg (viewBox 0 0 24 24, fill/stroke = currentColor) into
+    templates/icons/ and, for a brand colour, add it to `brand` below.
+#}
+{%- set icon_name = icon_name | default(value="") -%}
+{%- set brand = {
+  "python": "#3776AB",
+  "rust": "#000000",
+  "typescript": "#3178C6",
+  "bash": "#4EAA25",
+  "postgresql": "#4169E1",
+  "kubernetes": "#326CE5",
+  "terraform": "#844FBA",
+  "opentofu": "#D9A400",
+  "docker": "#2496ED",
+  "github-actions": "#2088FF",
+  "argocd": "#EF7B4D",
+  "prometheus": "#E6522C",
+  "grafana": "#F46800",
+  "snyk": "#4C4A73",
+  "tailscale": "#242424",
+  "linux": "#1F2937",
+  "gcp": "#4285F4",
+  "nvidia": "#76B900",
+  "ansible": "#EE0000",
+  "nixos": "#5277C3",
+  "wayland": "#E0A100",
+  "git": "#F03C2E",
+  "aws": "#FF9900",
+  "azure": "#0078D4",
+  "mcp": "#8B5CF6",
+  "crewai": "#FF6B35",
+  "langgraph": "#1A1A2E",
+  "kubeflow": "#326CE5",
+  "kyverno": "#009688",
+  "opa": "#F68E00",
+  "sonarqube": "#4E9BCD",
+  "sonarqubeserver": "#4E9BCD",
+  "falco": "#000000",
+  "vault": "#1563FF",
+  "packer": "#1A73E8",
+  "istio": "#466BB0",
+  "go": "#00ADD8",
+  "redis": "#DC382D",
+  "opencode": "#000000",
+  "fastapi": "#009688",
+  "infracost": "#4A90D9",
+  "nginx": "#009639",
+  "spring": "#6DB33F",
+  "airbyte": "#2E86DE",
+  "apachespark": "#E25A1C",
+  "auth0": "#EB5424",
+  "openbao": "#1563FF",
+  "wireshark": "#1679A7",
+  "opentelemetry": "#1F6EEC",
+  "datadog": "#632CA6",
+  "jenkins": "#D24939",
+  "snowflake": "#29B5E8",
+  "databricks": "#FF3621"
+} -%}
+{%- set generic = ["shield", "shield-check", "devsecops", "agentic-coding", "book-open"] -%}
+
+{%- if icon_name in brand -%}
+<span class="tech-icon tech-icon--brand" style="color: {{ brand[icon_name] }}">
+  {{- load_data(path="templates/icons/" ~ icon_name ~ ".svg", format="plain") | safe -}}
+</span>
+{%- elif icon_name in generic -%}
+<span class="tech-icon">
+  {{- load_data(path="templates/icons/" ~ icon_name ~ ".svg", format="plain") | safe -}}
+</span>
+{%- else -%}
+<span class="tech-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
+</svg>
+</span>
+{%- endif -%}

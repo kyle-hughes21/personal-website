@@ -8,7 +8,7 @@ tags = ["NVIDIA", "DCGM", "Prometheus", "Grafana", "GPU Monitoring", "Docker", "
 
 [extra]
 github = "https://github.com/kyle-hughes21/proton-observability"
-image = "images/projects/proton-observability.png"
+icon = "nvidia"
 +++
 
 Proton Observability is a purpose-built monitoring stack for NVIDIA GPU workloads — gaming, ML training, and compute. It collects granular GPU telemetry via DCGM Exporter, stores in Prometheus, and visualizes in pre-built Grafana dashboards.

@@ -9,7 +9,7 @@ tags = ["TypeScript", "React", "CRDT", "Local-First", "TTRPG", "Yjs", "IndexedDB
 [extra]
 github = "https://github.com/kyle-hughes21/open-character-sheet"
 demo = "https://charsheet.kylehughes.dev"
-image = "images/projects/open-character-sheet.png"
+icon = "book-open"
 +++
 
 open-character-sheet (OCS) is a **local-first, system-agnostic** character sheet application for tabletop RPGs. It treats character data as structured documents that work offline, sync peer-to-peer or via a central server, and adapt to any game system through a declarative schema.

@@ -2,9 +2,13 @@
 title = "JustPostgres Operator"
 date = 2024-11-15
 description = "A Kubernetes operator that makes PostgreSQL your entire backend — replacing Redis, Elasticsearch, MongoDB, Kafka, and more with native PostgreSQL extensions. Stop paying for SaaS. Just use PostgreSQL."
+
+[taxonomies]
 tags = ["Rust", "Kubernetes", "Operators", "PostgreSQL", "TimescaleDB", "FerretDB", "pgvector", "Open Source"]
+
+[extra]
 github = "https://github.com/kyle-hughes21/justpostgres-operator"
-image = "images/projects/justpostgres-operator.png"
+icon = "postgresql"
 +++
 
 JustPostgres Operator is a **production-grade Kubernetes operator** that makes PostgreSQL your entire backend. It replaces your SaaS stack — Redis, Elasticsearch, MongoDB, Kafka, Firebase, Supabase, Pinecone, and more — with native PostgreSQL extensions, managed as a single cluster.

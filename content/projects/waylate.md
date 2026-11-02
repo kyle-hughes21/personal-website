@@ -8,7 +8,7 @@ tags = ["Rust", "Wayland", "Smithay", "OCR", "Translation", "AI", "Language Lear
 
 [extra]
 github = "https://github.com/kyle-hughes21/waylate"
-image = "images/projects/waylate.png"
+icon = "linux"
 +++
 
 Waylate is an **immersive language learning tool** for Linux desktops running Wayland. It lets you watch films, play video games, and consume any media in your target language while providing real-time, context-aware translations — turning entertainment into effective language acquisition.
