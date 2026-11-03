@@ -13,6 +13,84 @@
       overflow-y: auto;
     }
   }
+
+  .experience-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .experience-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all var(--transition-normal);
+  }
+
+  .experience-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .experience-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .experience-meta {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .experience-date {
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+
+  .experience-location {
+    color: var(--color-text-secondary);
+  }
+
+  .experience-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .experience-company {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .experience-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .experience-highlights li {
+    position: relative;
+    padding-left: var(--space-6);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .experience-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
 </style>
 <section class="section" aria-labelledby="about-title">
   <div class="container">
@@ -55,6 +133,120 @@
           </dl>
         </div>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section" aria-labelledby="experience-title">
+  <div class="container">
+    <header class="section-header animate-fade-in">
+      <span class="section-tag">Experience</span>
+      <h2 id="experience-title" class="section-title">Experience</h2>
+    </header>
+
+    <div class="experience-timeline">
+      <!-- Principal Software Engineer (Consultant) @ Imprivata -->
+      <article class="experience-card animate-slide-up">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">Feb 2026 – Present</time>
+            <span class="experience-location">Waltham, MA</span>
+          </div>
+          <h3 class="experience-title">Principal Software Engineer (Consultant)</h3>
+          <p class="experience-company">Imprivata</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Lead AI enablement across Engineering: MCP security framework, training programs, communities of practice (50+ engineers)</li>
+          <li>Chair Security/Privacy/Compliance Engineering Steering Group, coordinating cross-functional initiatives across Engineering, Product, and Executive stakeholders</li>
+          <li>Built containerized version of flagship VM product, improving release execution and deployment consistency; built multi-cloud IaC (AWS, Azure, GCP) for VM provisioning</li>
+          <li>Building JustPostgres Operator: PostgreSQL-as-a-platform replacing Redis, Elasticsearch, MongoDB, Kafka with native extensions</li>
+        </ul>
+      </article>
+
+      <!-- Senior DevSecOps Engineer @ Context Labs -->
+      <article class="experience-card">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">March 2023 – February 2026</time>
+            <span class="experience-location">Cambridge, MA</span>
+          </div>
+          <h3 class="experience-title">Senior DevSecOps Engineer</h3>
+          <p class="experience-company">Context Labs</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Led AppSec program rollout: Snyk (SAST/SCA/DAST) across 20+ products and 3 product lines, partnered with 8+ engineering teams</li>
+          <li>Orchestrated zero-downtime migration from AWS EKS to Azure AKS across 3 product lines; coordinated platform, security, and application teams; managed risk register and executive communications</li>
+          <li>Owned on-call engineering operations: incident response, forensic investigations, runbook development, quarterly tabletop exercises</li>
+          <li>Standardized cloud-agnostic security controls, defining approved patterns for access control and cryptographic standards</li>
+        </ul>
+      </article>
+
+      <!-- Senior DevOps Engineer @ Imprivata -->
+      <article class="experience-card">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">October 2020 – March 2023</time>
+            <span class="experience-location">Waltham, MA</span>
+          </div>
+          <h3 class="experience-title">Senior DevOps Engineer</h3>
+          <p class="experience-company">Imprivata</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Architected and maintained 500+ CI/CD pipelines with integrated security gates (SAST, SCA, container scanning, policy-as-code)</li>
+          <li>Built Ansible roles standardizing developer environment setup across Engineering—still in active use as of 2026</li>
+          <li>Developed internal DevOps tooling in Python and Rust automating repetitive workflows, eliminating ~60% manual toil</li>
+          <li>Designed IaC security controls defending production workloads from DDoS, XSS, and supply chain attacks (AWS WAF, Shield)</li>
+          <li>Led adoption of automated security checks across development pipelines; built enablement materials guiding multiple teams</li>
+        </ul>
+      </article>
+
+      <!-- Earlier Roles -->
+      <article class="experience-card">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">2018 – 2020</time>
+            <span class="experience-location">Boston, MA</span>
+          </div>
+          <h3 class="experience-title">DevOps Engineer</h3>
+          <p class="experience-company">SimpliSafe</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Managed Kubernetes clusters (EKS, on-prem) for IoT platform serving 2M+ devices</li>
+          <li>Built GitOps workflows with ArgoCD; implemented progressive delivery with Flagger</li>
+          <li>Automated infrastructure provisioning with Terraform/Terragrunt across AWS accounts</li>
+        </ul>
+      </article>
+
+      <article class="experience-card">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">2016 – 2018</time>
+            <span class="experience-location">Boston, MA</span>
+          </div>
+          <h3 class="experience-title">DevOps Integration Specialist</h3>
+          <p class="experience-company">Eaton Vance</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Integrated CI/CD pipelines for financial services applications; implemented security scanning gates</li>
+          <li>Automated infrastructure provisioning with Ansible and Terraform across hybrid environments</li>
+        </ul>
+      </article>
+
+      <article class="experience-card">
+        <header class="experience-header">
+          <div class="experience-meta">
+            <time class="experience-date">2014 – 2016</time>
+            <span class="experience-location">Raleigh, NC</span>
+          </div>
+          <h3 class="experience-title">Systems Administrator</h3>
+          <p class="experience-company">Red Hat</p>
+        </header>
+        <ul class="experience-highlights">
+          <li>Managed RHEL infrastructure for OpenShift platform; automated patching and compliance with Ansible</li>
+          <li>Supported customer-facing OpenShift clusters; implemented monitoring with Prometheus/Grafana</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
